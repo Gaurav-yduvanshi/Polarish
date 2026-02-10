@@ -46,7 +46,7 @@ export const Providers = ({children}: {children: ReactNode}) => {
                             {/* <div className='flex items-center justify-center h-screen'>
                                 <p className='text-2xl'>Loading...</p>
                             </div> */}
-                            <AuthLoadingView />
+                        <AuthLoadingView />
 
                         </AuthLoading>
                     
