@@ -9,6 +9,13 @@ import { useCreateProject } from "../hooks/use-projects"
 import { adjectives, animals, colors, uniqueNamesGenerator } from "unique-names-generator"
 import { useEffect, useState } from "react"
 import { ProjectsCommandDialog } from "./projects-command-dialer"
+import { Poppins } from "next/font/google"
+
+
+const font = Poppins({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+})
 
 export const ProjectsView = () => {
     const createProject = useCreateProject();
