@@ -1,10 +1,11 @@
 'use client'
 
 import {  ReactNode } from 'react'
-import { ClerkProvider, SignInButton, SignOutButton, useAuth, UserButton } from '@clerk/nextjs'
+import { ClerkProvider, SignInButton, SignOutButton, useAuth } from '@clerk/nextjs'
 import { Authenticated, AuthLoading, ConvexReactClient, Unauthenticated } from 'convex/react'
 import { ConvexProviderWithClerk } from 'convex/react-clerk'
 import { ThemeProvider } from './theme-provider'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { UnauthenticatedView } from '@/features/auth/components/unauthenticated-view'
 import { AuthLoadingView } from '@/features/auth/components/auth_loading_view'
 
@@ -23,8 +24,9 @@ export const Providers = ({children}: {children: ReactNode}) => {
                     defaultTheme="dark"
                     enableSystem
                     disableTransitionOnChange>
+                        <TooltipProvider>
                         <Authenticated>
-                            <UserButton />
+                            
                             {children}
                             
                         </Authenticated>
@@ -50,6 +52,7 @@ export const Providers = ({children}: {children: ReactNode}) => {
 
                         </AuthLoading>
                     
+                </TooltipProvider>
                 </ThemeProvider>
             </ConvexProviderWithClerk>
         </ClerkProvider>
