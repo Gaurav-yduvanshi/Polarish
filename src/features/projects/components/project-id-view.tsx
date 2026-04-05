@@ -4,6 +4,15 @@ import { cn } from "@/lib/utils";
 import { Id } from "../../../../convex/_generated/dataModel";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
+import { Allotment } from "allotment";
+import { FileExplorer } from "./file-explorer";
+import { useProject } from "../hooks/use-projects";
+
+
+const MIN_SIDEBAR_WIDTH = 200;
+const MAX_SIDEBAR_WIDTH = 800;
+const DEFAULT_SIDEBAR_WIDTH = 500;
+const DEFAULT_MAIN_SIZE = 1000;
 
 const Tab = ({
     label,
@@ -38,6 +47,7 @@ export const ProjectIdView = ({
     projectId: Id<"projects">
 }) => {
     const [activeView, setActiveView] = useState<"editor" | "preview">("editor");
+   
 
     return (
         <div className="h-full flex flex-col">
@@ -67,7 +77,20 @@ export const ProjectIdView = ({
                     activeView === "editor" ? "visible" :
                         "invisible"
                 )}>
-                    <div>Editor</div>
+                    <Allotment defaultSizes={[DEFAULT_SIDEBAR_WIDTH,
+                        DEFAULT_MAIN_SIZE]}>
+                            <Allotment.Pane
+                                snap
+                                minSize={MIN_SIDEBAR_WIDTH}
+                                maxSize={MAX_SIDEBAR_WIDTH}
+                                preferredSize={DEFAULT_SIDEBAR_WIDTH}>
+                                <FileExplorer projectId={projectId}/>
+                            </Allotment.Pane>
+                            <Allotment.Pane>
+                                <p>Editor view</p>
+                            </Allotment.Pane>
+
+                    </Allotment>
                 </div>
 
                 <div className={cn(

@@ -6,6 +6,7 @@ import { Authenticated, AuthLoading, ConvexReactClient, Unauthenticated } from '
 import { ConvexProviderWithClerk } from 'convex/react-clerk'
 import { ThemeProvider } from './theme-provider'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { Toaster } from '@/components/ui/sonner'
 import { UnauthenticatedView } from '@/features/auth/components/unauthenticated-view'
 import { AuthLoadingView } from '@/features/auth/components/auth_loading_view'
 
@@ -53,6 +54,7 @@ export const Providers = ({children}: {children: ReactNode}) => {
                         </AuthLoading>
                     
                 </TooltipProvider>
+                <Toaster />
                 </ThemeProvider>
             </ConvexProviderWithClerk>
         </ClerkProvider>
